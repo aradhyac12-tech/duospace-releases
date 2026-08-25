@@ -1,0 +1,309 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.75rem;
+  /* Editorial paper-white system: warm off-white canvas, graphite ink,
+     one near-black "primary" so the only true colour on the page is the
+     brand duo-dot mark itself. */
+  --background: oklch(0.972 0.002 95);
+  --foreground: oklch(0.205 0.006 265);
+  --card: oklch(0.995 0.001 95);
+  --card-foreground: oklch(0.205 0.006 265);
+  --popover: oklch(0.995 0.001 95);
+  --popover-foreground: oklch(0.205 0.006 265);
+  --primary: oklch(0.235 0.008 265);
+  --primary-foreground: oklch(0.985 0.002 95);
+  --secondary: oklch(0.952 0.002 95);
+  --secondary-foreground: oklch(0.3 0.008 265);
+  --muted: oklch(0.948 0.002 95);
+  --muted-foreground: oklch(0.565 0.008 265);
+  --accent: oklch(0.943 0.003 95);
+  --accent-foreground: oklch(0.28 0.008 265);
+  --destructive: oklch(0.577 0.204 27.325);
+  --destructive-foreground: oklch(0.99 0.004 250);
+  --border: oklch(0.905 0.003 95);
+  --input: oklch(0.905 0.003 95);
+  --ring: oklch(0.52 0.146 258);
+  --chart-1: oklch(0.52 0.146 258);
+  --chart-2: oklch(0.66 0.11 195);
+  --chart-3: oklch(0.72 0.12 75);
+  --chart-4: oklch(0.6 0.13 300);
+  --chart-5: oklch(0.62 0.14 25);
+  --sidebar: oklch(0.96 0.002 95);
+  --sidebar-foreground: oklch(0.205 0.006 265);
+  --sidebar-primary: oklch(0.235 0.008 265);
+  --sidebar-primary-foreground: oklch(0.985 0.002 95);
+  --sidebar-accent: oklch(0.943 0.003 95);
+  --sidebar-accent-foreground: oklch(0.28 0.008 265);
+  --sidebar-border: oklch(0.905 0.003 95);
+  --sidebar-ring: oklch(0.52 0.146 258);
+}
+
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+/*
+ * DuoSpace additions.
+ *
+ * The marketing site (src/marketing) uses a layered surface scale on top of
+ * the base tokens, plus a soft "pop" shadow, a display heading family and a
+ * 44px minimum touch target. Surfaces are stored as raw HSL triplets because
+ * components compose them both as Tailwind colors (bg-surface-1/40) and as
+ * inline hsl(var(--surface-1)/0.72) values.
+ */
+
+:root {
+  --surface-0: 0 0% 100%;
+  --surface-1: 48 14% 97.5%;
+  --surface-2: 48 10% 95%;
+  --surface-3: 45 6% 91%;
+  --shadow-pop: 0 1px 1px hsl(40 10% 20% / 0.03), 0 8px 24px -14px hsl(40 10% 20% / 0.14);
+  /* Duo accent: the two brand hues pulled out of the mark and into the
+     wider site as gradients, glows and pressed states. Everything else
+     stays editorial/paper — this is the one place colour lives. */
+  --duo-a: 228 74% 52%;
+  --duo-a-soft: 214 88% 62%;
+  --duo-b: 272 68% 60%;
+  --duo-b-soft: 292 76% 66%;
+  --duo-glow: 0 12px 32px -12px hsl(var(--duo-a) / 0.38), 0 2px 8px -2px hsl(var(--duo-b) / 0.22);
+}
+
+.dark {
+  --surface-0: 224 32% 8%;
+  --surface-1: 224 30% 11%;
+  --surface-2: 224 26% 15%;
+  --surface-3: 224 24% 19%;
+  --shadow-pop: 0 1px 2px hsl(0 0% 0% / 0.4), 0 16px 40px -10px hsl(0 0% 0% / 0.55);
+  --duo-glow: 0 12px 36px -10px hsl(var(--duo-a) / 0.5), 0 2px 10px -2px hsl(var(--duo-b) / 0.32);
+}
+
+@theme inline {
+  --color-surface-0: hsl(var(--surface-0));
+  --color-surface-1: hsl(var(--surface-1));
+  --color-surface-2: hsl(var(--surface-2));
+  --color-surface-3: hsl(var(--surface-3));
+  --font-heading:
+    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --spacing-touch: 2.75rem;
+}
+
+@utility surface-1 {
+  background-color: hsl(var(--surface-1));
+}
+
+/* Faint engineering-paper grid — the quiet substrate the editorial layout
+   sits on. Kept extremely low contrast so it reads as texture, not lines. */
+@utility paper-grid {
+  background-image:
+    linear-gradient(to right, hsl(45 8% 78% / 0.28) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(45 8% 78% / 0.28) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* A content tile: soft recessed panel used for every product still. A
+   hairline duo-tinted border appears on hover/focus so tiles read as
+   reactive surfaces, not flat backgrounds — the same accent used on
+   buttons, just at whisper opacity here. */
+@utility tile {
+  background-color: hsl(var(--surface-2));
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.tile:hover,
+.tile:focus-within {
+  border-color: hsl(var(--duo-a) / 0.18);
+}
+
+/* Tiny caps label used above tiles and section blocks. */
+@utility label-tiny {
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+}
+
+/* Skip layout/paint work for tiles that are far off-screen. Purely a
+   rendering optimisation — the reserved intrinsic size keeps scroll
+   position and layout identical. */
+@utility tile-defer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 320px;
+}
+
+/* Responsive device width: one element, breakpoint-aware size. */
+@media (min-width: 768px) {
+  .device-mockup {
+    width: var(--device-w-md) !important;
+  }
+}
+
+/* Duo gradient — the brand's two hues, for anything that wants the fresh
+   accent instead of flat ink (primary CTA, progress rule, active glows). */
+@utility duo-gradient {
+  background-image: linear-gradient(
+    115deg,
+    hsl(var(--duo-a-soft)) 0%,
+    hsl(var(--duo-a)) 45%,
+    hsl(var(--duo-b)) 100%
+  );
+}
+
+@utility duo-glow {
+  box-shadow: var(--duo-glow);
+}
+
+@utility duo-text-gradient {
+  background-image: linear-gradient(100deg, hsl(var(--duo-a)) 0%, hsl(var(--duo-b)) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /*
+   * Touch reactivity fixes — this is a marketing site meant to be pressed,
+   * not just hovered. Three defaults iOS/Android otherwise fight us on:
+   * 1) the blue/grey flash on tap ("tap highlight"),
+   * 2) the ~300ms delay + accidental double-tap zoom on interactive els,
+   * 3) rubber-band overscroll fighting scroll-linked animations.
+   */
+  a,
+  button,
+  [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  html {
+    overscroll-behavior-y: none;
+  }
+
+  /* Focus reactivity — the touch/hover pass above covers pointer input;
+     keyboard users get nothing without this. A visible duo-tinted ring on
+     every interactive element, only when navigating by keyboard (not on
+     mouse/touch click) so it doesn't fight the pointer-driven states. */
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 2px solid hsl(var(--duo-a));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
