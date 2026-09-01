@@ -29,8 +29,8 @@ export function DuoMark({ size = 40, className, animateIn = true }: DuoMarkProps
       style={{ width: size, height: size, display: "block" }}
       initial={animateIn && !reduced ? { opacity: 0, scale: 0.82, rotate: -8 } : false}
       animate={{ opacity: 1, scale: 1, rotate: 0 }}
-      whileHover={reduced ? undefined : { scale: 1.06 }}
-      whileTap={reduced ? undefined : { scale: 0.94 }}
+      whileHover={{ scale: reduced ? 1 : 1.06 }}
+      whileTap={{ scale: reduced ? 1 : 0.94 }}
       transition={spring}
     />
   );
