@@ -10,7 +10,12 @@
 
 import type { PublicRelease } from "@/lib/releases";
 
-export type DownloadPlatform = "androidApk" | "googlePlay" | "appleAppStore" | "web";
+export type DownloadPlatform =
+  | "androidApk"
+  | "googlePlay"
+  | "appleAppStore"
+  | "ipa"
+  | "web";
 
 
 export interface DownloadLinkMeta {
@@ -20,6 +25,9 @@ export interface DownloadLinkMeta {
 }
 
 const env = import.meta.env;
+
+/** The live DuoSpace web app — always available, even before a release row exists. */
+export const DEFAULT_WEB_URL = "https://duospace-ten.vercel.app";
 
 export const downloadLinks: Record<DownloadPlatform, DownloadLinkMeta> = {
   androidApk: {
@@ -37,12 +45,18 @@ export const downloadLinks: Record<DownloadPlatform, DownloadLinkMeta> = {
     label: "Download on the App Store",
     sublabel: "iPhone & iPad",
   },
+  ipa: {
+    url: (env["VITE_DUOSPACE_IPA_URL"] as string | undefined) || null,
+    label: "iOS build (.ipa)",
+    sublabel: "Internal / testing",
+  },
   web: {
-    url: (env["VITE_DUOSPACE_WEB_URL"] as string | undefined) || null,
+    url: (env["VITE_DUOSPACE_WEB_URL"] as string | undefined) || DEFAULT_WEB_URL,
     label: "Open DuoSpace",
     sublabel: "Web",
   },
 };
+
 
 /** Optional, purely informational — never blocks a download if unset. */
 export const releaseMeta = {
@@ -65,6 +79,11 @@ export function resolveDownloadLinks(
     appleAppStore: {
       ...downloadLinks.appleAppStore,
       url: release.appleAppStoreUrl ?? downloadLinks.appleAppStore.url,
+    },
+    ipa: {
+      ...downloadLinks.ipa,
+      url: release.ipaUrl ?? downloadLinks.ipa.url,
+      label: release.ipaLabel || downloadLinks.ipa.label,
     },
     web: { ...downloadLinks.web, url: release.webUrl ?? downloadLinks.web.url },
   };

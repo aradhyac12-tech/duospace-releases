@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Smartphone, Apple, Globe, ArrowUpRight } from "lucide-react";
+import { Smartphone, Apple, Globe, ArrowUpRight, PlayCircle, FileDown } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import {
   resolveDownloadLinks,
@@ -140,6 +140,18 @@ export function DownloadCTA() {
               sublabel={links.appleAppStore.sublabel}
               url={links.appleAppStore.url}
               primary={platform === "ios"}
+            />
+            <PlatformRow
+              icon={PlayCircle}
+              label={links.googlePlay.label}
+              sublabel={links.googlePlay.sublabel}
+              url={links.googlePlay.url}
+            />
+            <PlatformRow
+              icon={FileDown}
+              label={links.ipa.label}
+              sublabel={links.ipa.sublabel}
+              url={links.ipa.url}
             />
             <PlatformRow
               icon={Globe}

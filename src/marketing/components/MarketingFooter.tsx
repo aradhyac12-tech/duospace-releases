@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+
 import { DuoMark } from "./DuoMark";
 
 const LINKS = [
@@ -26,6 +28,12 @@ export function MarketingFooter() {
               {l.label}
             </a>
           ))}
+          <Link
+            to="/auth"
+            className="text-[12.5px] text-muted-foreground hover:text-foreground active:text-foreground transition-colors touch-manipulation"
+          >
+            Admin
+          </Link>
         </nav>
 
         <p className="text-[11px] font-mono text-muted-foreground/70">
