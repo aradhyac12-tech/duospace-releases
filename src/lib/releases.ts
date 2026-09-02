@@ -10,6 +10,8 @@ export interface PublicRelease {
   googlePlayUrl: string | null;
   appleAppStoreUrl: string | null;
   webUrl: string | null;
+  ipaUrl: string | null;
+  ipaLabel: string | null;
   publishedAt: string | null;
 }
 

@@ -33,7 +33,7 @@ export const getPublishedRelease = createServerFn({ method: "GET" }).handler(
     const { data, error } = await supabase
       .from("app_releases")
       .select(
-        "version, build_number, apk_storage_path, apk_filename, apk_size_bytes, google_play_url, apple_app_store_url, web_url, published_at",
+        "version, build_number, apk_storage_path, apk_filename, apk_size_bytes, google_play_url, apple_app_store_url, web_url, ipa_url, ipa_label, published_at",
       )
       .eq("status", "published")
       .maybeSingle();
@@ -59,6 +59,8 @@ export const getPublishedRelease = createServerFn({ method: "GET" }).handler(
       googlePlayUrl: data.google_play_url,
       appleAppStoreUrl: data.apple_app_store_url,
       webUrl: data.web_url,
+      ipaUrl: data.ipa_url,
+      ipaLabel: data.ipa_label,
       publishedAt: data.published_at,
     };
   },

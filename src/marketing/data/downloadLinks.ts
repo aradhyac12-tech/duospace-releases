@@ -80,6 +80,11 @@ export function resolveDownloadLinks(
       ...downloadLinks.appleAppStore,
       url: release.appleAppStoreUrl ?? downloadLinks.appleAppStore.url,
     },
+    ipa: {
+      ...downloadLinks.ipa,
+      url: release.ipaUrl ?? downloadLinks.ipa.url,
+      label: release.ipaLabel || downloadLinks.ipa.label,
+    },
     web: { ...downloadLinks.web, url: release.webUrl ?? downloadLinks.web.url },
   };
 }
