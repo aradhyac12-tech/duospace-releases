@@ -20,6 +20,7 @@ const line = (delay: number) => ({
  */
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -29,6 +30,23 @@ export function Hero() {
   const markOffset = useTransform(scrollYProgress, [0, 0.6], [22, 0]);
   const markCenterOpacity = useTransform(scrollYProgress, [0.1, 0.6], [0, 1]);
   const stillY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+
+  // The pinned stage: while the artefact is held in place, the two devices
+  // draw apart, straighten and settle — the product opening itself up.
+  const { scrollYProgress: stageProgress } = useScroll({
+    target: stageRef,
+    offset: ["start start", "end end"],
+  });
+  const stage = useSpring(stageProgress, { stiffness: 120, damping: 28, mass: 0.4 });
+  const leftX = useTransform(stage, [0, 1], ["0%", "-52%"]);
+  const rightX = useTransform(stage, [0, 1], ["0%", "52%"]);
+  const leftRotate = useTransform(stage, [0, 1], [-3, -9]);
+  const rightRotate = useTransform(stage, [0, 1], [3, 9]);
+  const stageScale = useTransform(stage, [0, 1], [1, 1.12]);
+  const gridScale = useTransform(stage, [0, 1], [1, 1.25]);
+  const captionOpacity = useTransform(stage, [0.25, 0.6], [0, 1]);
+  const captionY = useTransform(stage, [0.25, 0.6], [14, 0]);
+
 
   return (
     <section id="top" ref={sectionRef} className="relative px-5 pt-24 md:pt-28 overflow-hidden">
