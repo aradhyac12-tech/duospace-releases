@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { DeviceMockup } from "../components/DeviceMockup";
 import { ChatPreview } from "../components/ChatPreview";
 import { CallsPreview } from "../components/CallsPreview";
@@ -20,6 +20,7 @@ const line = (delay: number) => ({
  */
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -30,8 +31,25 @@ export function Hero() {
   const markCenterOpacity = useTransform(scrollYProgress, [0.1, 0.6], [0, 1]);
   const stillY = useTransform(scrollYProgress, [0, 1], [0, -60]);
 
+  // The pinned stage: while the artefact is held in place, the two devices
+  // draw apart, straighten and settle — the product opening itself up.
+  const { scrollYProgress: stageProgress } = useScroll({
+    target: stageRef,
+    offset: ["start start", "end end"],
+  });
+  const stage = useSpring(stageProgress, { stiffness: 120, damping: 28, mass: 0.4 });
+  const leftX = useTransform(stage, [0, 1], ["0%", "-52%"]);
+  const rightX = useTransform(stage, [0, 1], ["0%", "52%"]);
+  const leftRotate = useTransform(stage, [0, 1], [-3, -9]);
+  const rightRotate = useTransform(stage, [0, 1], [3, 9]);
+  const stageScale = useTransform(stage, [0, 1], [1, 1.12]);
+  const gridScale = useTransform(stage, [0, 1], [1, 1.25]);
+  const captionOpacity = useTransform(stage, [0.25, 0.6], [0, 1]);
+  const captionY = useTransform(stage, [0.25, 0.6], [14, 0]);
+
+
   return (
-    <section id="top" ref={sectionRef} className="relative px-5 pt-24 md:pt-28 overflow-hidden">
+    <section id="top" ref={sectionRef} className="relative px-5 pt-24 md:pt-28 overflow-x-clip">
       {/* Fresh visual anchor: a slow, ambient duo-colour wash behind the
           masthead. It's the one place the brand's two hues bleed out past
           the mark itself — everything else stays quiet editorial paper. */}
@@ -89,45 +107,71 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* The artefact: one wide still, two devices resting inside it */}
-        <motion.div
-          initial={{ opacity: 0, y: 26 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: EASE.smooth, delay: 0.5 }}
-        >
-          <p className="label-tiny mb-2 text-foreground">
-            DuoSpace <span className="text-muted-foreground">Overview</span>
-          </p>
-          <motion.div
-            style={{ y: reduced ? 0 : stillY }}
-            className="tile relative flex items-center justify-center gap-4 md:gap-10 h-[380px] md:h-[520px] px-6 overflow-hidden"
-          >
-            <div className="absolute inset-0 paper-grid opacity-60" aria-hidden />
+        {/* The artefact, pinned: the tile holds still for one screen of
+            scroll while the two devices draw apart inside it. */}
+        <div ref={stageRef} className="relative h-[170vh] md:h-[190vh]">
+          <div className="sticky top-[14vh] md:top-[12vh]">
             <motion.div
-              initial={{ y: 40, rotate: -3, opacity: 0 }}
-              animate={{ y: 0, rotate: -3, opacity: 1 }}
-              transition={{ duration: 0.9, ease: EASE.smooth, delay: 0.62 }}
-              whileHover={{ rotate: 0, y: -12, scale: 1.05, zIndex: 2 }}
-              className="relative"
+              initial={{ opacity: 0, y: 26 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: EASE.smooth, delay: 0.5 }}
             >
-              <DeviceMockup width="min(132px, 34vw)" widthMd={208}>
-                <ChatPreview />
-              </DeviceMockup>
-            </motion.div>
-            <motion.div
-              initial={{ y: 40, rotate: 3, opacity: 0 }}
-              animate={{ y: 0, rotate: 3, opacity: 1 }}
-              transition={{ duration: 0.9, ease: EASE.smooth, delay: 0.72 }}
-              whileHover={{ rotate: 0, y: -12, scale: 1.05, zIndex: 2 }}
-              className="relative"
-            >
-              <DeviceMockup width="min(132px, 34vw)" widthMd={208} dark>
-                <CallsPreview />
-              </DeviceMockup>
-            </motion.div>
+              <p className="label-tiny mb-2 text-foreground">
+                DuoSpace <span className="text-muted-foreground">Overview</span>
+              </p>
+              <motion.div
+                style={{ y: reduced ? 0 : stillY }}
+                className="tile relative flex items-center justify-center gap-4 md:gap-10 h-[62vh] md:h-[68vh] max-h-[560px] px-6 overflow-hidden"
+              >
+                <motion.div
+                  style={{ scale: reduced ? 1 : gridScale }}
+                  className="absolute inset-0 paper-grid opacity-60"
+                  aria-hidden
+                />
+                <motion.div
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.9, ease: EASE.smooth, delay: 0.62 }}
+                  style={
+                    reduced
+                      ? { rotate: -3 }
+                      : { x: leftX, rotate: leftRotate, scale: stageScale }
+                  }
+                  whileHover={{ y: -12, zIndex: 2 }}
+                  className="relative"
+                >
+                  <DeviceMockup width="min(132px, 34vw)" widthMd={208}>
+                    <ChatPreview />
+                  </DeviceMockup>
+                </motion.div>
+                <motion.div
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.9, ease: EASE.smooth, delay: 0.72 }}
+                  style={
+                    reduced
+                      ? { rotate: 3 }
+                      : { x: rightX, rotate: rightRotate, scale: stageScale }
+                  }
+                  whileHover={{ y: -12, zIndex: 2 }}
+                  className="relative"
+                >
+                  <DeviceMockup width="min(132px, 34vw)" widthMd={208} dark>
+                    <CallsPreview />
+                  </DeviceMockup>
+                </motion.div>
 
-          </motion.div>
-        </motion.div>
+                <motion.p
+                  style={reduced ? {} : { opacity: captionOpacity, y: captionY }}
+                  className="absolute bottom-6 left-0 right-0 text-center font-display italic text-[clamp(1rem,2.4vw,1.5rem)] text-muted-foreground px-6"
+                >
+                  Two people, one private space.
+                </motion.p>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+
       </div>
     </section>
   );

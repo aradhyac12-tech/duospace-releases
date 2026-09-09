@@ -1,5 +1,7 @@
 import { MarketingNav } from "../components/MarketingNav";
 import { ScrollProgress } from "../components/ScrollProgress";
+import { SmoothScroll } from "../components/SmoothScroll";
+import { MarqueeStrip } from "../components/MarqueeStrip";
 import { MarketingFooter } from "../components/MarketingFooter";
 import { Hero } from "../sections/Hero";
 import { Ecosystem } from "../sections/Ecosystem";
@@ -8,23 +10,29 @@ import { BuiltForTwo } from "../sections/BuiltForTwo";
 import { Privacy } from "../sections/Privacy";
 import { DownloadCTA } from "../sections/DownloadCTA";
 
+const MARQUEE = ["Chat", "Calls", "Gallery", "Music", "Map", "Personal", "Private"];
+
+
 // Title/description/social tags are declared by the route's head() in
 // src/routes/index.tsx so SSR serves them in the initial HTML.
 export default function MarketingHome() {
 
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="relative min-h-screen bg-background text-foreground overflow-x-clip">
+      <SmoothScroll />
       <ScrollProgress />
       <MarketingNav />
       <main>
         <Hero />
+        <MarqueeStrip items={MARQUEE} />
         <Ecosystem />
         <FeatureShowcase />
         <BuiltForTwo />
         <Privacy />
         <DownloadCTA />
       </main>
+
       <MarketingFooter />
     </div>
   );

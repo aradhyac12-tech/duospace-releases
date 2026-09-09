@@ -38,6 +38,8 @@ export function FeatureScene({ id, eyebrow, headline, copy, children, reverse }:
   const deviceRotate = useTransform(p, [0, 0.5, 1], [reverse ? 4 : -4, 0, reverse ? -4 : 4]);
   const deviceScale = useTransform(p, [0, 0.5, 1], [0.94, 1, 0.94]);
   const gridShift = useTransform(p, [0, 1], ["0px", "-56px"]);
+  const textY = useTransform(p, [0, 1], [40, -40]);
+  const ruleScale = useTransform(p, [0.1, 0.6], [0, 1]);
 
   return (
     <section id={id} ref={ref} className="relative px-5 py-14 md:py-20">
@@ -82,12 +84,21 @@ export function FeatureScene({ id, eyebrow, headline, copy, children, reverse }:
           </TiltTile>
         </div>
 
-        <div className="max-w-sm md:px-6">
+        <motion.div
+          style={reduced ? {} : { y: textY }}
+          className="max-w-sm md:px-6"
+        >
+          <motion.div
+            style={{ scaleX: ruleScale }}
+            className="mb-5 hidden md:block h-px origin-left duo-gradient"
+            aria-hidden
+          />
           <WordReveal
             as="h3"
             text={headline}
             className="font-display text-[clamp(1.7rem,3.4vw,2.4rem)] leading-[1.1] tracking-[-0.01em]"
           />
+
           <motion.p
             variants={revealUp}
             custom={0.1}
@@ -98,7 +109,7 @@ export function FeatureScene({ id, eyebrow, headline, copy, children, reverse }:
           >
             {copy}
           </motion.p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
