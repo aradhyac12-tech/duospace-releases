@@ -49,7 +49,7 @@ export function Hero() {
 
 
   return (
-    <section id="top" ref={sectionRef} className="relative px-5 pt-24 md:pt-28 overflow-hidden">
+    <section id="top" ref={sectionRef} className="relative px-5 pt-24 md:pt-28 overflow-x-clip">
       {/* Fresh visual anchor: a slow, ambient duo-colour wash behind the
           masthead. It's the one place the brand's two hues bleed out past
           the mark itself — everything else stays quiet editorial paper. */}
@@ -109,7 +109,7 @@ export function Hero() {
 
         {/* The artefact, pinned: the tile holds still for one screen of
             scroll while the two devices draw apart inside it. */}
-        <div ref={stageRef} className="relative h-[220vh] md:h-[240vh]">
+        <div ref={stageRef} className="relative h-[170vh] md:h-[190vh]">
           <div className="sticky top-[14vh] md:top-[12vh]">
             <motion.div
               initial={{ opacity: 0, y: 26 }}
