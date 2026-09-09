@@ -109,7 +109,7 @@ export function FeatureScene({ id, eyebrow, headline, copy, children, reverse }:
           >
             {copy}
           </motion.p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
