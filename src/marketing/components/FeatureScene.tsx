@@ -38,6 +38,8 @@ export function FeatureScene({ id, eyebrow, headline, copy, children, reverse }:
   const deviceRotate = useTransform(p, [0, 0.5, 1], [reverse ? 4 : -4, 0, reverse ? -4 : 4]);
   const deviceScale = useTransform(p, [0, 0.5, 1], [0.94, 1, 0.94]);
   const gridShift = useTransform(p, [0, 1], ["0px", "-56px"]);
+  const textY = useTransform(p, [0, 1], [40, -40]);
+  const ruleScale = useTransform(p, [0.1, 0.6], [0, 1]);
 
   return (
     <section id={id} ref={ref} className="relative px-5 py-14 md:py-20">
