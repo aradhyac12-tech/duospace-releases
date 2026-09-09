@@ -107,45 +107,71 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* The artefact: one wide still, two devices resting inside it */}
-        <motion.div
-          initial={{ opacity: 0, y: 26 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: EASE.smooth, delay: 0.5 }}
-        >
-          <p className="label-tiny mb-2 text-foreground">
-            DuoSpace <span className="text-muted-foreground">Overview</span>
-          </p>
-          <motion.div
-            style={{ y: reduced ? 0 : stillY }}
-            className="tile relative flex items-center justify-center gap-4 md:gap-10 h-[380px] md:h-[520px] px-6 overflow-hidden"
-          >
-            <div className="absolute inset-0 paper-grid opacity-60" aria-hidden />
+        {/* The artefact, pinned: the tile holds still for one screen of
+            scroll while the two devices draw apart inside it. */}
+        <div ref={stageRef} className="relative h-[220vh] md:h-[240vh]">
+          <div className="sticky top-[14vh] md:top-[12vh]">
             <motion.div
-              initial={{ y: 40, rotate: -3, opacity: 0 }}
-              animate={{ y: 0, rotate: -3, opacity: 1 }}
-              transition={{ duration: 0.9, ease: EASE.smooth, delay: 0.62 }}
-              whileHover={{ rotate: 0, y: -12, scale: 1.05, zIndex: 2 }}
-              className="relative"
+              initial={{ opacity: 0, y: 26 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: EASE.smooth, delay: 0.5 }}
             >
-              <DeviceMockup width="min(132px, 34vw)" widthMd={208}>
-                <ChatPreview />
-              </DeviceMockup>
-            </motion.div>
-            <motion.div
-              initial={{ y: 40, rotate: 3, opacity: 0 }}
-              animate={{ y: 0, rotate: 3, opacity: 1 }}
-              transition={{ duration: 0.9, ease: EASE.smooth, delay: 0.72 }}
-              whileHover={{ rotate: 0, y: -12, scale: 1.05, zIndex: 2 }}
-              className="relative"
-            >
-              <DeviceMockup width="min(132px, 34vw)" widthMd={208} dark>
-                <CallsPreview />
-              </DeviceMockup>
-            </motion.div>
+              <p className="label-tiny mb-2 text-foreground">
+                DuoSpace <span className="text-muted-foreground">Overview</span>
+              </p>
+              <motion.div
+                style={{ y: reduced ? 0 : stillY }}
+                className="tile relative flex items-center justify-center gap-4 md:gap-10 h-[62vh] md:h-[68vh] max-h-[560px] px-6 overflow-hidden"
+              >
+                <motion.div
+                  style={{ scale: reduced ? 1 : gridScale }}
+                  className="absolute inset-0 paper-grid opacity-60"
+                  aria-hidden
+                />
+                <motion.div
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.9, ease: EASE.smooth, delay: 0.62 }}
+                  style={
+                    reduced
+                      ? { rotate: -3 }
+                      : { x: leftX, rotate: leftRotate, scale: stageScale }
+                  }
+                  whileHover={{ y: -12, zIndex: 2 }}
+                  className="relative"
+                >
+                  <DeviceMockup width="min(132px, 34vw)" widthMd={208}>
+                    <ChatPreview />
+                  </DeviceMockup>
+                </motion.div>
+                <motion.div
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.9, ease: EASE.smooth, delay: 0.72 }}
+                  style={
+                    reduced
+                      ? { rotate: 3 }
+                      : { x: rightX, rotate: rightRotate, scale: stageScale }
+                  }
+                  whileHover={{ y: -12, zIndex: 2 }}
+                  className="relative"
+                >
+                  <DeviceMockup width="min(132px, 34vw)" widthMd={208} dark>
+                    <CallsPreview />
+                  </DeviceMockup>
+                </motion.div>
 
-          </motion.div>
-        </motion.div>
+                <motion.p
+                  style={reduced ? {} : { opacity: captionOpacity, y: captionY }}
+                  className="absolute bottom-6 left-0 right-0 text-center font-display italic text-[clamp(1rem,2.4vw,1.5rem)] text-muted-foreground px-6"
+                >
+                  Two people, one private space.
+                </motion.p>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
