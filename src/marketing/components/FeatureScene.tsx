@@ -84,12 +84,21 @@ export function FeatureScene({ id, eyebrow, headline, copy, children, reverse }:
           </TiltTile>
         </div>
 
-        <div className="max-w-sm md:px-6">
+        <motion.div
+          style={reduced ? {} : { y: textY }}
+          className="max-w-sm md:px-6"
+        >
+          <motion.div
+            style={{ scaleX: ruleScale }}
+            className="mb-5 hidden md:block h-px origin-left duo-gradient"
+            aria-hidden
+          />
           <WordReveal
             as="h3"
             text={headline}
             className="font-display text-[clamp(1.7rem,3.4vw,2.4rem)] leading-[1.1] tracking-[-0.01em]"
           />
+
           <motion.p
             variants={revealUp}
             custom={0.1}
