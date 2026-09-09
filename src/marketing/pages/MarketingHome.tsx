@@ -20,16 +20,19 @@ export default function MarketingHome() {
 
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
+      <SmoothScroll />
       <ScrollProgress />
       <MarketingNav />
       <main>
         <Hero />
+        <MarqueeStrip items={MARQUEE} />
         <Ecosystem />
         <FeatureShowcase />
         <BuiltForTwo />
         <Privacy />
         <DownloadCTA />
       </main>
+
       <MarketingFooter />
     </div>
   );
