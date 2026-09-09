@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { DeviceMockup } from "../components/DeviceMockup";
 import { ChatPreview } from "../components/ChatPreview";
 import { CallsPreview } from "../components/CallsPreview";
