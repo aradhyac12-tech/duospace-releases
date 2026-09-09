@@ -19,7 +19,7 @@ export default function MarketingHome() {
 
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="relative min-h-screen bg-background text-foreground overflow-x-clip">
       <SmoothScroll />
       <ScrollProgress />
       <MarketingNav />
