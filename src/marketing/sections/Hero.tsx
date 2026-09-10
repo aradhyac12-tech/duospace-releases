@@ -1,4 +1,18 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+/** True from the md breakpoint up; false during SSR and on phones. */
+function useIsWide() {
+  const [wide, setWide] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const on = () => setWide(mq.matches);
+    on();
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
+  return wide;
+}
+
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { DeviceMockup } from "../components/DeviceMockup";
 import { ChatPreview } from "../components/ChatPreview";
@@ -38,12 +52,16 @@ export function Hero() {
     offset: ["start start", "end end"],
   });
   const stage = useSpring(stageProgress, { stiffness: 120, damping: 28, mass: 0.4 });
-  const leftX = useTransform(stage, [0, 1], ["0%", "-52%"]);
-  const rightX = useTransform(stage, [0, 1], ["0%", "52%"]);
+  // Phones sit closer together on narrow screens, so they separate less —
+  // otherwise they slide out past the edges of the paper tile.
+  const spread = useIsWide() ? 52 : 22;
+  const leftX = useTransform(stage, [0, 1], ["0%", `-${spread}%`]);
+  const rightX = useTransform(stage, [0, 1], ["0%", `${spread}%`]);
   const leftRotate = useTransform(stage, [0, 1], [-3, -9]);
   const rightRotate = useTransform(stage, [0, 1], [3, 9]);
-  const stageScale = useTransform(stage, [0, 1], [1, 1.12]);
+  const stageScale = useTransform(stage, [0, 1], [1, spread > 30 ? 1.12 : 1.04]);
   const gridScale = useTransform(stage, [0, 1], [1, 1.25]);
+
   const captionOpacity = useTransform(stage, [0.25, 0.6], [0, 1]);
   const captionY = useTransform(stage, [0.25, 0.6], [14, 0]);
 
