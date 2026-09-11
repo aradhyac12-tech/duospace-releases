@@ -80,22 +80,22 @@ export function MarketingNav() {
             ))}
             <a
               href="#download"
-              className="ml-0.5 px-3.5 py-1.5 rounded-lg text-[12.5px] duo-gradient text-white font-medium active:brightness-90 transition-[filter] touch-manipulation"
+              className="ml-0.5 px-3.5 py-1.5 rounded-xl text-[12.5px] duo-gradient text-white font-semibold shadow-[0_8px_20px_-10px_hsl(228_74%_52%/0.7)] active:brightness-90 transition-[filter] touch-manipulation"
             >
               Get the app
             </a>
           </nav>
 
-          <div className="md:hidden flex items-center gap-1 rounded-xl bg-[hsl(220_9%_16%/0.94)] p-1 pl-2.5 backdrop-blur-xl">
+          <div className="md:hidden flex items-center gap-1 rounded-2xl border border-border/80 bg-[hsl(0_0%_100%/0.78)] p-1 pl-2.5 backdrop-blur-xl shadow-[0_10px_30px_-20px_hsl(230_40%_30%/0.4)]">
             <a href="#top" className="flex items-center gap-1.5 pr-1">
               <DuoMark size={18} animateIn={false} />
-              <span className="text-[12.5px] text-white/85">DuoSpace</span>
+              <span className="text-[12.5px] font-semibold text-foreground">DuoSpace</span>
             </a>
             <button
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((v) => !v)}
-              className="h-8 w-8 flex items-center justify-center rounded-lg text-white/70 hover:bg-white/10 active:bg-white/20 touch-manipulation"
+              className="h-8 w-8 flex items-center justify-center rounded-xl text-muted-foreground hover:bg-accent active:bg-accent touch-manipulation"
             >
               {menuOpen ? <X size={16} /> : <Menu size={16} />}
             </button>
