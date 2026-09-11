@@ -158,10 +158,10 @@
 
 :root {
   --surface-0: 0 0% 100%;
-  --surface-1: 48 14% 97.5%;
-  --surface-2: 48 10% 95%;
-  --surface-3: 45 6% 91%;
-  --shadow-pop: 0 1px 1px hsl(40 10% 20% / 0.03), 0 8px 24px -14px hsl(40 10% 20% / 0.14);
+  --surface-1: 0 0% 100%;
+  --surface-2: 225 30% 99%;
+  --surface-3: 225 22% 96%;
+  --shadow-pop: 0 1px 2px hsl(230 30% 30% / 0.04), 0 12px 32px -18px hsl(230 40% 30% / 0.18);
   /* Duo accent: the two brand hues pulled out of the mark and into the
      wider site as gradients, glows and pressed states. Everything else
      stays editorial/paper — this is the one place colour lives. */
@@ -186,10 +186,9 @@
   --color-surface-1: hsl(var(--surface-1));
   --color-surface-2: hsl(var(--surface-2));
   --color-surface-3: hsl(var(--surface-3));
-  --font-heading:
-    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-heading: "Sora", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Sora", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --spacing-touch: 2.75rem;
 }
