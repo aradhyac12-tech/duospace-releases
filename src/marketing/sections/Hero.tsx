@@ -74,7 +74,7 @@ export function Hero() {
       <motion.div
         aria-hidden
         style={{ y: reduced ? 0 : stillY }}
-        className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[520px] w-[860px] max-w-[140vw] rounded-full blur-[120px] opacity-40 duo-gradient"
+        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[460px] w-[820px] max-w-[140vw] rounded-full blur-[140px] opacity-[0.18] duo-gradient"
       />
       <div className="relative mx-auto max-w-[1180px]">
         {/* Masthead */}
@@ -100,7 +100,7 @@ export function Hero() {
             italicTo={4}
             emphasis="gradient"
             delay={0.25}
-            className="mt-10 md:mt-14 font-display text-[clamp(2.1rem,6vw,3.9rem)] leading-[1.06] tracking-[-0.01em] max-w-3xl text-balance"
+            className="mt-10 md:mt-14 font-display font-semibold text-[clamp(2.1rem,6vw,3.9rem)] leading-[1.05] tracking-[-0.035em] max-w-3xl text-balance"
           />
 
           <motion.div {...line(0.4)} className="mt-8 flex items-center gap-2">
