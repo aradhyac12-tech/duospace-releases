@@ -62,35 +62,34 @@
 }
 
 :root {
-  --radius: 0.75rem;
-  /* Editorial paper-white system: warm off-white canvas, graphite ink,
-     one near-black "primary" so the only true colour on the page is the
-     brand duo-dot mark itself. */
-  --background: oklch(0.972 0.002 95);
-  --foreground: oklch(0.205 0.006 265);
-  --card: oklch(0.995 0.001 95);
-  --card-foreground: oklch(0.205 0.006 265);
-  --popover: oklch(0.995 0.001 95);
-  --popover-foreground: oklch(0.205 0.006 265);
-  --primary: oklch(0.235 0.008 265);
-  --primary-foreground: oklch(0.985 0.002 95);
-  --secondary: oklch(0.952 0.002 95);
-  --secondary-foreground: oklch(0.3 0.008 265);
-  --muted: oklch(0.948 0.002 95);
-  --muted-foreground: oklch(0.565 0.008 265);
-  --accent: oklch(0.943 0.003 95);
-  --accent-foreground: oklch(0.28 0.008 265);
+  --radius: 1rem;
+  /* Fresh white system: pure white canvas, cool ink, and the logo's
+     blue-violet duo as the only colour. */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.19 0.02 265);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.19 0.02 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.19 0.02 265);
+  --primary: oklch(0.52 0.19 268);
+  --primary-foreground: oklch(0.99 0.005 265);
+  --secondary: oklch(0.975 0.004 265);
+  --secondary-foreground: oklch(0.3 0.02 265);
+  --muted: oklch(0.973 0.004 265);
+  --muted-foreground: oklch(0.56 0.02 265);
+  --accent: oklch(0.968 0.008 268);
+  --accent-foreground: oklch(0.32 0.06 268);
   --destructive: oklch(0.577 0.204 27.325);
   --destructive-foreground: oklch(0.99 0.004 250);
-  --border: oklch(0.905 0.003 95);
-  --input: oklch(0.905 0.003 95);
+  --border: oklch(0.925 0.005 265);
+  --input: oklch(0.925 0.005 265);
   --ring: oklch(0.52 0.146 258);
   --chart-1: oklch(0.52 0.146 258);
   --chart-2: oklch(0.66 0.11 195);
   --chart-3: oklch(0.72 0.12 75);
   --chart-4: oklch(0.6 0.13 300);
   --chart-5: oklch(0.62 0.14 25);
-  --sidebar: oklch(0.96 0.002 95);
+  --sidebar: oklch(0.985 0.003 265);
   --sidebar-foreground: oklch(0.205 0.006 265);
   --sidebar-primary: oklch(0.235 0.008 265);
   --sidebar-primary-foreground: oklch(0.985 0.002 95);
