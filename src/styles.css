@@ -197,30 +197,33 @@
   background-color: hsl(var(--surface-1));
 }
 
-/* Faint engineering-paper grid — the quiet substrate the editorial layout
-   sits on. Kept extremely low contrast so it reads as texture, not lines. */
+/* Cool hairline grid — a crisp technical substrate under white tiles. */
 @utility paper-grid {
   background-image:
-    linear-gradient(to right, hsl(45 8% 78% / 0.28) 1px, transparent 1px),
-    linear-gradient(to bottom, hsl(45 8% 78% / 0.28) 1px, transparent 1px);
-  background-size: 72px 72px;
+    linear-gradient(to right, hsl(228 30% 72% / 0.16) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(228 30% 72% / 0.16) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
-/* A content tile: soft recessed panel used for every product still. A
-   hairline duo-tinted border appears on hover/focus so tiles read as
-   reactive surfaces, not flat backgrounds — the same accent used on
-   buttons, just at whisper opacity here. */
+/* A content tile: crisp white card, hairline border, soft lifted shadow. */
 @utility tile {
-  background-color: hsl(var(--surface-2));
-  border-radius: 1rem;
+  background-color: hsl(var(--surface-0));
+  border-radius: 1.25rem;
   overflow: hidden;
-  border: 1px solid transparent;
-  transition: border-color 0.3s ease;
+  border: 1px solid hsl(228 22% 90% / 0.9);
+  box-shadow: var(--shadow-pop);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 .tile:hover,
 .tile:focus-within {
-  border-color: hsl(var(--duo-a) / 0.18);
+  border-color: hsl(var(--duo-a) / 0.3);
+  box-shadow:
+    0 1px 2px hsl(230 30% 30% / 0.05),
+    0 22px 48px -24px hsl(var(--duo-a) / 0.34);
 }
 
 /* Tiny caps label used above tiles and section blocks. */
