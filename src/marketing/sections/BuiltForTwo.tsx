@@ -39,7 +39,7 @@ export function BuiltForTwo() {
             initial="hidden"
             whileInView="show"
             viewport={revealViewport}
-            className="relative mt-8 font-display text-[clamp(1.9rem,4.6vw,3.1rem)] leading-[1.08] tracking-[-0.01em] max-w-2xl text-balance"
+            className="relative mt-8 font-display font-semibold text-[clamp(1.9rem,4.6vw,3.1rem)] leading-[1.06] tracking-[-0.03em] max-w-2xl text-balance"
           >
             Two people. One space. <em className="italic text-muted-foreground">No audience.</em>
           </motion.h2>
@@ -63,7 +63,7 @@ export function BuiltForTwo() {
                 whileTap={{ y: -2 }}
                 className="bg-surface-1 px-4 py-5 transition-colors hover:bg-surface-0 active:bg-surface-0"
               >
-                <p className="font-display text-2xl leading-none">
+                <p className="font-display text-2xl font-semibold leading-none">
                   <CountUp value={f.v} />
                 </p>
                 <p className="mt-2 text-[11px] text-muted-foreground">{f.k}</p>

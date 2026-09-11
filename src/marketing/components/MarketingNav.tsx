@@ -122,7 +122,7 @@ export function MarketingNav() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, ease: EASE.smooth, delay: 0.05 * i }}
                   whileTap={{ x: 6, color: "hsl(var(--duo-a))" }}
-                  className="font-display text-4xl py-2.5 border-b border-border/60 text-foreground touch-manipulation"
+                  className="font-display text-4xl font-semibold tracking-[-0.03em] py-2.5 border-b border-border/60 text-foreground touch-manipulation"
                 >
                   {link.label}
                 </motion.a>

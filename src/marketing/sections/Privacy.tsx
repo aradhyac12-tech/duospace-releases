@@ -39,7 +39,7 @@ export function Privacy() {
           initial="hidden"
           whileInView="show"
           viewport={revealViewport}
-          className="font-display text-[clamp(1.9rem,4.4vw,3rem)] leading-[1.08] tracking-[-0.01em] max-w-2xl"
+          className="font-display font-semibold text-[clamp(1.9rem,4.4vw,3rem)] leading-[1.06] tracking-[-0.03em] max-w-2xl"
         >
           Nobody else is in the room. <em className="italic text-muted-foreground">Not even us.</em>
         </motion.h2>

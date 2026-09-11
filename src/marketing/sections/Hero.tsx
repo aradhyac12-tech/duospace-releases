@@ -181,7 +181,7 @@ export function Hero() {
 
                 <motion.p
                   style={reduced ? {} : { opacity: captionOpacity, y: captionY }}
-                  className="absolute bottom-6 left-0 right-0 text-center font-display italic text-[clamp(1rem,2.4vw,1.5rem)] text-muted-foreground px-6"
+                  className="absolute bottom-6 left-0 right-0 text-center font-display text-[clamp(1rem,2.4vw,1.5rem)] font-medium tracking-[-0.02em] text-muted-foreground px-6"
                 >
                   Two people, one private space.
                 </motion.p>
