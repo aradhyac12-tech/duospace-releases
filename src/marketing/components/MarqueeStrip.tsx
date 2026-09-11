@@ -59,7 +59,7 @@ export function MarqueeStrip({ items, speed = 26 }: MarqueeStripProps) {
             <span key={copy} className="flex items-center">
               {items.map((item, i) => (
                 <span key={`${copy}-${i}`} className="flex items-center">
-                  <span className="font-display italic text-[clamp(1.6rem,4vw,3rem)] leading-none text-muted-foreground/70 px-5">
+                  <span className="font-display font-semibold tracking-[-0.03em] text-[clamp(1.6rem,4vw,3rem)] leading-none text-muted-foreground/70 px-5">
                     {item}
                   </span>
                   <span className="h-1.5 w-1.5 rounded-full duo-gradient shrink-0" />

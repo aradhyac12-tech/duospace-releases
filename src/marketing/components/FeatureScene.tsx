@@ -96,7 +96,7 @@ export function FeatureScene({ id, eyebrow, headline, copy, children, reverse }:
           <WordReveal
             as="h3"
             text={headline}
-            className="font-display text-[clamp(1.7rem,3.4vw,2.4rem)] leading-[1.1] tracking-[-0.01em]"
+            className="font-display font-semibold text-[clamp(1.7rem,3.4vw,2.4rem)] leading-[1.1] tracking-[-0.03em]"
           />
 
           <motion.p

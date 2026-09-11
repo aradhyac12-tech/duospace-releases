@@ -62,35 +62,34 @@
 }
 
 :root {
-  --radius: 0.75rem;
-  /* Editorial paper-white system: warm off-white canvas, graphite ink,
-     one near-black "primary" so the only true colour on the page is the
-     brand duo-dot mark itself. */
-  --background: oklch(0.972 0.002 95);
-  --foreground: oklch(0.205 0.006 265);
-  --card: oklch(0.995 0.001 95);
-  --card-foreground: oklch(0.205 0.006 265);
-  --popover: oklch(0.995 0.001 95);
-  --popover-foreground: oklch(0.205 0.006 265);
-  --primary: oklch(0.235 0.008 265);
-  --primary-foreground: oklch(0.985 0.002 95);
-  --secondary: oklch(0.952 0.002 95);
-  --secondary-foreground: oklch(0.3 0.008 265);
-  --muted: oklch(0.948 0.002 95);
-  --muted-foreground: oklch(0.565 0.008 265);
-  --accent: oklch(0.943 0.003 95);
-  --accent-foreground: oklch(0.28 0.008 265);
+  --radius: 1rem;
+  /* Fresh white system: pure white canvas, cool ink, and the logo's
+     blue-violet duo as the only colour. */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.19 0.02 265);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.19 0.02 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.19 0.02 265);
+  --primary: oklch(0.52 0.19 268);
+  --primary-foreground: oklch(0.99 0.005 265);
+  --secondary: oklch(0.975 0.004 265);
+  --secondary-foreground: oklch(0.3 0.02 265);
+  --muted: oklch(0.973 0.004 265);
+  --muted-foreground: oklch(0.56 0.02 265);
+  --accent: oklch(0.968 0.008 268);
+  --accent-foreground: oklch(0.32 0.06 268);
   --destructive: oklch(0.577 0.204 27.325);
   --destructive-foreground: oklch(0.99 0.004 250);
-  --border: oklch(0.905 0.003 95);
-  --input: oklch(0.905 0.003 95);
+  --border: oklch(0.925 0.005 265);
+  --input: oklch(0.925 0.005 265);
   --ring: oklch(0.52 0.146 258);
   --chart-1: oklch(0.52 0.146 258);
   --chart-2: oklch(0.66 0.11 195);
   --chart-3: oklch(0.72 0.12 75);
   --chart-4: oklch(0.6 0.13 300);
   --chart-5: oklch(0.62 0.14 25);
-  --sidebar: oklch(0.96 0.002 95);
+  --sidebar: oklch(0.985 0.003 265);
   --sidebar-foreground: oklch(0.205 0.006 265);
   --sidebar-primary: oklch(0.235 0.008 265);
   --sidebar-primary-foreground: oklch(0.985 0.002 95);
@@ -159,10 +158,10 @@
 
 :root {
   --surface-0: 0 0% 100%;
-  --surface-1: 48 14% 97.5%;
-  --surface-2: 48 10% 95%;
-  --surface-3: 45 6% 91%;
-  --shadow-pop: 0 1px 1px hsl(40 10% 20% / 0.03), 0 8px 24px -14px hsl(40 10% 20% / 0.14);
+  --surface-1: 0 0% 100%;
+  --surface-2: 225 30% 99%;
+  --surface-3: 225 22% 96%;
+  --shadow-pop: 0 1px 2px hsl(230 30% 30% / 0.04), 0 12px 32px -18px hsl(230 40% 30% / 0.18);
   /* Duo accent: the two brand hues pulled out of the mark and into the
      wider site as gradients, glows and pressed states. Everything else
      stays editorial/paper — this is the one place colour lives. */
@@ -187,10 +186,9 @@
   --color-surface-1: hsl(var(--surface-1));
   --color-surface-2: hsl(var(--surface-2));
   --color-surface-3: hsl(var(--surface-3));
-  --font-heading:
-    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-heading: "Sora", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Sora", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --spacing-touch: 2.75rem;
 }
@@ -199,30 +197,33 @@
   background-color: hsl(var(--surface-1));
 }
 
-/* Faint engineering-paper grid — the quiet substrate the editorial layout
-   sits on. Kept extremely low contrast so it reads as texture, not lines. */
+/* Cool hairline grid — a crisp technical substrate under white tiles. */
 @utility paper-grid {
   background-image:
-    linear-gradient(to right, hsl(45 8% 78% / 0.28) 1px, transparent 1px),
-    linear-gradient(to bottom, hsl(45 8% 78% / 0.28) 1px, transparent 1px);
-  background-size: 72px 72px;
+    linear-gradient(to right, hsl(228 30% 72% / 0.16) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(228 30% 72% / 0.16) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
-/* A content tile: soft recessed panel used for every product still. A
-   hairline duo-tinted border appears on hover/focus so tiles read as
-   reactive surfaces, not flat backgrounds — the same accent used on
-   buttons, just at whisper opacity here. */
+/* A content tile: crisp white card, hairline border, soft lifted shadow. */
 @utility tile {
-  background-color: hsl(var(--surface-2));
-  border-radius: 1rem;
+  background-color: hsl(var(--surface-0));
+  border-radius: 1.25rem;
   overflow: hidden;
-  border: 1px solid transparent;
-  transition: border-color 0.3s ease;
+  border: 1px solid hsl(228 22% 90% / 0.9);
+  box-shadow: var(--shadow-pop);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 .tile:hover,
 .tile:focus-within {
-  border-color: hsl(var(--duo-a) / 0.18);
+  border-color: hsl(var(--duo-a) / 0.3);
+  box-shadow:
+    0 1px 2px hsl(230 30% 30% / 0.05),
+    0 22px 48px -24px hsl(var(--duo-a) / 0.34);
 }
 
 /* Tiny caps label used above tiles and section blocks. */

@@ -101,7 +101,7 @@ export function DownloadCTA() {
             initial="hidden"
             whileInView="show"
             viewport={revealViewport}
-            className="mt-6 font-display text-[clamp(1.9rem,4.6vw,3.1rem)] leading-[1.08] tracking-[-0.01em]"
+            className="mt-6 font-display font-semibold text-[clamp(1.9rem,4.6vw,3.1rem)] leading-[1.06] tracking-[-0.03em]"
           >
             Your space is ready.
           </motion.h2>
