@@ -56,21 +56,23 @@ export function MarketingNav() {
         transition={{ duration: 0.6, ease: EASE.smooth }}
       >
         <div className="flex items-center gap-2">
-          <nav className="hidden md:flex items-center gap-0.5 rounded-xl bg-[hsl(220_9%_16%/0.94)] p-1 backdrop-blur-xl shadow-[0_10px_30px_-16px_rgba(0,0,0,0.5)]">
+          <nav className="hidden md:flex items-center gap-0.5 rounded-2xl border border-border/80 bg-[hsl(0_0%_100%/0.72)] p-1 backdrop-blur-xl shadow-[0_10px_30px_-18px_hsl(230_40%_30%/0.35)]">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "relative px-3.5 py-1.5 rounded-lg text-[12.5px] transition-colors",
-                  active === link.href ? "text-white" : "text-white/50 hover:text-white/80",
+                  "relative px-3.5 py-1.5 rounded-xl text-[12.5px] font-medium transition-colors",
+                  active === link.href
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 {active === link.href && (
                   <motion.span
                     layoutId="nav-chip"
                     transition={{ type: "spring", stiffness: 420, damping: 34 }}
-                    className="absolute inset-0 rounded-lg duo-gradient opacity-[0.22]"
+                    className="absolute inset-0 rounded-xl duo-gradient opacity-[0.12]"
                   />
                 )}
                 <span className="relative">{link.label}</span>
