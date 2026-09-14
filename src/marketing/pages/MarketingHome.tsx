@@ -4,13 +4,13 @@ import { SmoothScroll } from "../components/SmoothScroll";
 import { MarqueeStrip } from "../components/MarqueeStrip";
 import { MarketingFooter } from "../components/MarketingFooter";
 import { Hero } from "../sections/Hero";
-import { Ecosystem } from "../sections/Ecosystem";
-import { FeatureShowcase } from "../sections/FeatureShowcase";
-import { BuiltForTwo } from "../sections/BuiltForTwo";
+import { BrandStory } from "../sections/BrandStory";
+import { DuoSpaceOS } from "../sections/DuoSpaceOS";
 import { Privacy } from "../sections/Privacy";
 import { DownloadCTA } from "../sections/DownloadCTA";
+import { GuidedDemo, ProductExperience } from "../components/ProductExperience";
 
-const MARQUEE = ["Chat", "Calls", "Gallery", "Music", "Map", "Personal", "Private"];
+const MARQUEE = ["Two people", "One private world", "No audience", "DuoSpace"];
 
 
 // Title/description/social tags are declared by the route's head() in
@@ -19,17 +19,18 @@ export default function MarketingHome() {
 
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground overflow-x-clip">
+    <div className="cinematic-site relative min-h-screen bg-background text-foreground overflow-x-clip">
       <SmoothScroll />
       <ScrollProgress />
       <MarketingNav />
       <main>
         <Hero />
         <MarqueeStrip items={MARQUEE} />
-        <Ecosystem />
-        <FeatureShowcase />
-        <BuiltForTwo />
+        <BrandStory />
+        <ProductExperience />
+        <DuoSpaceOS />
         <Privacy />
+        <GuidedDemo />
         <DownloadCTA />
       </main>
 

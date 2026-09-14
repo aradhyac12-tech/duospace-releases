@@ -3,14 +3,14 @@ import { Link } from "@tanstack/react-router";
 import { DuoMark } from "./DuoMark";
 
 const LINKS = [
-  { label: "Features", href: "#features" },
+  { label: "Experience", href: "#experience" },
   { label: "Privacy", href: "#privacy" },
-  { label: "Download", href: "#download" },
+  { label: "Release", href: "#download" },
 ];
 
 export function MarketingFooter() {
   return (
-    <footer className="relative px-5 pb-12">
+    <footer className="relative px-5 pb-12 pt-16">
       <div className="mx-auto max-w-[1180px] border-t border-border pt-6 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <DuoMark size={20} animateIn={false} />
