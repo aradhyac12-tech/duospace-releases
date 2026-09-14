@@ -6,12 +6,12 @@ import { DuoMark } from "./DuoMark";
 import { EASE } from "../lib/motion";
 
 const NAV_LINKS = [
-  { label: "Home", href: "#top" },
-  { label: "Features", href: "#features" },
+  { label: "Experience", href: "#experience" },
   { label: "Privacy", href: "#privacy" },
+  { label: "Release", href: "#download" },
 ];
 
-const SECTION_IDS = ["top", "features", "privacy", "download"];
+const SECTION_IDS = ["top", "experience", "privacy", "download"];
 
 /**
  * A single floating segmented control, centered at the top of the page —
@@ -56,7 +56,11 @@ export function MarketingNav() {
         transition={{ duration: 0.6, ease: EASE.smooth }}
       >
         <div className="flex items-center gap-2">
-          <nav className="hidden md:flex items-center gap-0.5 rounded-2xl border border-border/80 bg-[hsl(0_0%_100%/0.72)] p-1 backdrop-blur-xl shadow-[0_10px_30px_-18px_hsl(230_40%_30%/0.35)]">
+          <nav className="hidden md:flex items-center gap-0.5 rounded-full border border-border bg-card/75 p-1 pl-3 backdrop-blur-xl shadow-[var(--shadow-pop)]">
+            <a href="#top" className="mr-2 flex items-center gap-2 pr-2 text-[11px] font-semibold uppercase text-foreground">
+              <DuoMark size={18} animateIn={false} />
+              DuoSpace
+            </a>
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
@@ -72,7 +76,7 @@ export function MarketingNav() {
                   <motion.span
                     layoutId="nav-chip"
                     transition={{ type: "spring", stiffness: 420, damping: 34 }}
-                    className="absolute inset-0 rounded-xl duo-gradient opacity-[0.12]"
+                    className="absolute inset-0 rounded-full bg-accent"
                   />
                 )}
                 <span className="relative">{link.label}</span>
@@ -80,13 +84,13 @@ export function MarketingNav() {
             ))}
             <a
               href="#download"
-              className="ml-0.5 px-3.5 py-1.5 rounded-xl text-[12.5px] duo-gradient text-white font-semibold shadow-[0_8px_20px_-10px_hsl(228_74%_52%/0.7)] active:brightness-90 transition-[filter] touch-manipulation"
+              className="ml-0.5 px-4 py-2 rounded-full text-[11px] uppercase duo-gradient text-primary-foreground font-semibold duo-glow active:brightness-90 transition-[filter] touch-manipulation"
             >
-              Get the app
+              Open app →
             </a>
           </nav>
 
-          <div className="md:hidden flex items-center gap-1 rounded-2xl border border-border/80 bg-[hsl(0_0%_100%/0.78)] p-1 pl-2.5 backdrop-blur-xl shadow-[0_10px_30px_-20px_hsl(230_40%_30%/0.4)]">
+          <div className="md:hidden flex items-center gap-1 rounded-full border border-border bg-card/80 p-1 pl-3 backdrop-blur-xl shadow-[var(--shadow-pop)]">
             <a href="#top" className="flex items-center gap-1.5 pr-1">
               <DuoMark size={18} animateIn={false} />
               <span className="text-[12.5px] font-semibold text-foreground">DuoSpace</span>

@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import MarketingHome from "@/marketing/pages/MarketingHome";
 import { publishedReleaseQueryOptions } from "@/lib/release-queries";
 
-const TITLE = "DuoSpace — A Private Space for Two";
+const TITLE = "DuoSpace — Your Private World for Two";
 const DESCRIPTION =
-  "End-to-end encrypted chat, calls, a shared gallery, music, location and personalization — one private app built for exactly two people.";
+  "A private space for two. Chat, calls, memories, music, location and personalization — together, without an audience.";
 
 export const Route = createFileRoute("/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(publishedReleaseQueryOptions),
@@ -18,6 +18,7 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://duo-release-hub.lovable.app/" }],
   }),
   component: MarketingHome,
 });
