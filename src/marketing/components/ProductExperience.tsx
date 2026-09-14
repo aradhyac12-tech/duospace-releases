@@ -22,6 +22,7 @@ const MODES = [
 export function ProductExperience() {
   const [active, setActive] = useState(0);
   const mode = MODES[active];
+  if (!mode) return null;
   const Preview = mode.view;
 
   return (
@@ -91,6 +92,7 @@ export function GuidedDemo() {
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(false);
   const mode = MODES[active];
+  if (!mode) return null;
   const Preview = mode.view;
 
   useEffect(() => {
